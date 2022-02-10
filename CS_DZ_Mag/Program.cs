@@ -12,7 +12,7 @@ namespace CS_DZ_Mag
         {
             Random rand = new Random();
             int heroHealth = 2700;
-            int demonHealth = 2500;
+            int demonHealth = 2000;
             int heroDamage = 100;
             int demonDamage = 150;
             int graceDamage = 500;
@@ -62,7 +62,6 @@ namespace CS_DZ_Mag
                         else if (mana <= manaGrace) 
                         {
                             Console.WriteLine("Недостаточно маны! ");
-                            mana += manaEveryTurn;
                         }
                         
                         break;
@@ -78,7 +77,6 @@ namespace CS_DZ_Mag
                         else
                         {
                             Console.WriteLine("Недостаточно маны! ");
-                            mana += manaEveryTurn;
                         }
                         break;
 
@@ -92,7 +90,6 @@ namespace CS_DZ_Mag
                         else
                         {
                             Console.WriteLine("Недостаточно маны! ");
-                            mana += manaEveryTurn;
                         }
                         break;
 
