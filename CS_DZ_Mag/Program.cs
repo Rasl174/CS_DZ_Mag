@@ -11,56 +11,67 @@ namespace CS_DZ_Mag
         static void Main(string[] args)
         {
             Random rand = new Random();
-            int heroHealth = 2000;
+            int heroHealth = 2700;
             int demonHealth = 2500;
             int heroDamage = 100;
-            int demonDamage = 300;
-            int grace = 250;
-            int sunlight = 100;
-            int metheor = 150;
+            int demonDamage = 150;
+            int graceDamage = 500;
+            int sunlightDamage = 200;
+            int metheorDamage = 250;
             int mana = 100;
             int manaEveryTurn = 10;
-            int spellNumber;
+            int variantsHeroDamage = 4;
             int manaGrace = 50;
             int manaSunlight = 20;
-            int manaMetheor = 35;
+            int manaMetheor = 30;
+            bool spellDone = false;
 
             Console.WriteLine("Да начнется битва: ");
 
             while (heroHealth > 0 && demonHealth > 0)
             {
-                 switch (spellNumber = rand.Next(0, 5))
+                if (mana <= 90)
                 {
-                    case 1:
-                        mana += manaEveryTurn;
-                        heroHealth -= demonDamage;
-                        Console.WriteLine("Герой получил урон. осталось : " + heroHealth + " жизней");
-                        break;
+                    mana += manaEveryTurn;
+                }
+                heroHealth -= demonDamage;
+                Console.WriteLine("Герой получил урон. осталось : " + heroHealth + " жизней");
 
-                    case 2:
+                switch (variantsHeroDamage = rand.Next(0, 5))
+                {
+                    
+                    case 1:
                         mana += manaEveryTurn;
                         demonHealth -= heroDamage;
                         Console.WriteLine("Демон получил урон. осталось : " + demonHealth + " жизней");
                         break;
 
-                    case 3:
-                        if (mana >= manaGrace)
+                    case 2:
+                        if (mana >= manaGrace && spellDone == true)
                         {
-                            demonHealth -= grace;
+                            spellDone = false;
+                            demonHealth -= graceDamage;
                             mana -= manaGrace;
                             Console.WriteLine("Герой применил заклинание Благодать. У демона осталось : " + demonHealth + " жизней");
                         }
-                        else
+                        else if (spellDone == false) 
+                        {
+                            Console.WriteLine("Требуется выполнить заклинание Солнечный свет!");
+                        }
+
+                        else if (mana <= manaGrace) 
                         {
                             Console.WriteLine("Недостаточно маны! ");
                             mana += manaEveryTurn;
                         }
+                        
                         break;
 
-                    case 4:
+                    case 3:
                         if (mana >= manaSunlight)
                         {
-                            demonHealth -= sunlight;
+                            spellDone = true;
+                            demonHealth -= sunlightDamage;
                             mana -= manaSunlight;
                             Console.WriteLine("Герой применил заклинание Солнечный свет. У демона осталось : " + demonHealth + " жизней");
                         }
@@ -71,10 +82,10 @@ namespace CS_DZ_Mag
                         }
                         break;
 
-                    case 5:
+                    case 4:
                         if (mana >= manaMetheor)
                         {
-                            demonHealth -= metheor;
+                            demonHealth -= metheorDamage;
                             mana -= manaMetheor;
                             Console.WriteLine("Герой применил заклинание Метеорит. У демона осталось : " + demonHealth + " жизней");
                         }
