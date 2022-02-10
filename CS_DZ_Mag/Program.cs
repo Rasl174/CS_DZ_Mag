@@ -41,7 +41,6 @@ namespace CS_DZ_Mag
                 {
                     
                     case 1:
-                        mana += manaEveryTurn;
                         demonHealth -= heroDamage;
                         Console.WriteLine("Демон получил урон. осталось : " + demonHealth + " жизней");
                         break;
