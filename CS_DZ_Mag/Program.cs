@@ -24,7 +24,7 @@ namespace CS_DZ_Mag
             int manaGrace = 50;
             int manaSunlight = 20;
             int manaMetheor = 30;
-            bool spellDone = false;
+            bool spellSunlightDone = false;
 
             Console.WriteLine("Да начнется битва: ");
 
@@ -47,14 +47,14 @@ namespace CS_DZ_Mag
                         break;
 
                     case 2:
-                        if (mana >= manaGrace && spellDone == true)
+                        if (mana >= manaGrace && spellSunlightDone == true)
                         {
-                            spellDone = false;
+                            spellSunlightDone = false;
                             demonHealth -= graceDamage;
                             mana -= manaGrace;
                             Console.WriteLine("Герой применил заклинание Благодать. У демона осталось : " + demonHealth + " жизней");
                         }
-                        else if (spellDone == false) 
+                        else if (spellSunlightDone == false) 
                         {
                             Console.WriteLine("Требуется выполнить заклинание Солнечный свет!");
                         }
@@ -70,7 +70,7 @@ namespace CS_DZ_Mag
                     case 3:
                         if (mana >= manaSunlight)
                         {
-                            spellDone = true;
+                            spellSunlightDone = true;
                             demonHealth -= sunlightDamage;
                             mana -= manaSunlight;
                             Console.WriteLine("Герой применил заклинание Солнечный свет. У демона осталось : " + demonHealth + " жизней");
